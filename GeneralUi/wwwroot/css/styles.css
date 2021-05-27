@@ -1,0 +1,69 @@
+﻿/*
+    This file is to show how CSS and other static resources (such as images) can be
+    used from a library project/package.
+*/
+
+.validation-container {
+    display: flex;
+    flex-flow: row
+}
+
+.validation-input {
+    flex: 1 1 auto;
+    /*flex-grow:1;
+    flex-shrink:1;
+    flex-basis:auto*/
+}
+
+.val-tooltip {
+    position: relative;
+    display: flex;
+    flex: 0 0 20px;
+    background: red;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem
+}
+
+    .val-tooltip p {
+        color: white;
+        margin: auto;
+        font-size: 1.2em
+    }
+
+    .val-tooltip .val-tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 50%;
+        margin-left: -60px;
+    }
+
+    .val-tooltip:hover .val-tooltiptext {
+        visibility: visible;
+    }
+
+
+.busy-overlay {
+    background: beige;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    opacity: 0.6;
+    display: flex
+}
+
+    .busy-overlay > div {
+        margin: auto;
+    }
+

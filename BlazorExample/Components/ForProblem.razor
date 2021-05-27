@@ -1,0 +1,23 @@
+﻿<h3>ForProblem</h3>
+
+@for (var i = 1; i <= 4; i++)
+{
+    var buttonNumber = i;
+
+    <button class="btn btn-primary"
+            @onclick="@(e => Update(buttonNumber))">
+        @i
+    </button>
+}
+
+<div>@_current</div>
+
+@code {
+
+    private int _current = -1;
+
+    private void Update(int buttonNumber)
+    {
+        _current = buttonNumber;
+    }
+}

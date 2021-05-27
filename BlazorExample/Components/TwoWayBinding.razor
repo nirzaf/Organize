@@ -1,0 +1,58 @@
+﻿<div style="display: flex;flex-direction:column">
+    Example 1:
+    <input @bind="_text" />
+    <input @bind="_text" />
+    <input value="@_text"
+           @onchange="@((ChangeEventArgs e) => _text = 
+                            e.Value.ToString())" />
+</div>
+
+@*<div style="display: flex; flex-direction: column;margin-top:20px">
+    Example 3:
+    <input type="checkbox" @bind-checked="_is"/>
+</div>*@
+
+<div style="display: flex; flex-direction: column;margin-top:20px">
+    Example 2:
+    <input type="text" @bind-value="_paragraphStyle" @bind-value:event="oninput" />
+    <p style="@_paragraphStyle">
+        Blazorify the app!
+    </p>
+</div>
+
+@*<p @bind-style="paragraphStyle" @bind-style:event="onfocus">
+    Blazorify the app!
+</p>
+
+<p style="@paragraphStyle">
+    Blazorify the app!
+</p>*@
+
+<div style="display: flex; flex-direction: column;margin-top:20px">
+Example 3:
+    <input type="text" @bind-value="_height" @bind-value:event="onchange"/>
+</div>
+
+@*no chance*@
+@*<input type="text" @bind-value="_height" />
+<textarea @bind-value="_height" @bind-value:event="oncopy">XXX</textarea>*@
+
+<div style="display: flex; flex-direction: column;margin-top:20px">
+    Example 4:
+    <input type="text" @bind-value="_option" />
+    <select id="select-box" @bind="_option">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+</div>
+
+    @code {
+        private bool _is = true;
+        private string _width = "10px";
+        private string _height;
+        private string _text = "Blazor";
+        private string _paragraphStyle = "color:red";
+
+        private int _option = 2;
+    }

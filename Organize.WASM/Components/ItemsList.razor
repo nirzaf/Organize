@@ -1,0 +1,74 @@
+﻿<div class="w-100" @onclick="OnBackgroundClicked">
+    <CascadingValue Value="UserItems.Count">
+        @foreach (var item in UserItems)
+        {
+            switch (item)
+            {
+                case TextItem textItem:
+                    <CascadingValue Value="@("primary")">
+                        <ItemElement TItem="Organize.Shared.Enitites.BaseItem"
+                                     Item="@item">
+                            <MainFragment>
+                                <div class="item-main-container">
+                                    <div class="content-text-top title">@textItem.Title</div>
+                                    <div class="content-text-bottom">@textItem.SubTitle</div>
+                                </div>
+                            </MainFragment>
+                            <DetailFragment>
+                                <div class="detail-text">@textItem.Detail</div>
+                            </DetailFragment>
+                        </ItemElement>
+                    </CascadingValue>
+                    break;
+                case UrlItem urlItem:
+                    <CascadingValue Value="@("secondary")">
+                        <ItemElement TItem="Organize.Shared.Enitites.BaseItem"
+                                     Item="@item">
+                            <MainFragment>
+                                <div class="item-main-container">
+                                    <div class="content-text-top title">@urlItem.Title</div>
+                                    <a class="content-text-bottom" href="@urlItem.Url" target="_blank">@urlItem.Url</a>
+                                </div>
+                            </MainFragment>
+                            <DetailFragment>
+                                <img class="detail-image" src="@urlItem.Url">
+                            </DetailFragment>
+                        </ItemElement>
+                    </CascadingValue>
+                    break;
+                case ParentItem parentItem:
+                    <ObservableCollectionObserver TProp="ChildItem" Collection="parentItem.ChildItems" ObserveChildren="true">
+                        <CascadingValue Value="@("tertiary")">
+                            <ItemElement TItem="Organize.Shared.Enitites.BaseItem"
+                                         Item="@item">
+                                <MainFragment>
+                                    <div class="item-main-container">
+                                        <div class="content-text-top title">@parentItem.Title</div>
+                                        <div class="content-text-bottom">Children Count: @parentItem.ChildItems.Count</div>
+                                        <div class="content-text-bottom">Done @parentItem.ChildItems.Count(i => i.IsDone)</div>
+                                    </div>
+                                </MainFragment>
+                                <DetailFragment>
+                                    @foreach (var childItem in parentItem.ChildItems)
+                                    {
+                                        <div class="extended-child">
+                                            <div class="check-container">
+                                                <div class="checkbox tertiary-border-color" style="border: 1px solid">
+                                                    <ItemCheckBox Item="@childItem"></ItemCheckBox>
+                                                </div>
+                                            </div>
+                                            <div class="content-container">
+                                                <p class="child-title">@childItem.Title</p>
+                                            </div>
+                                        </div>
+                                    }
+                                </DetailFragment>
+                            </ItemElement>
+                        </CascadingValue>
+                    </ObservableCollectionObserver>
+                    break;
+            }
+
+        }
+    </CascadingValue>
+</div>

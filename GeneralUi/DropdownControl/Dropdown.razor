@@ -1,0 +1,18 @@
+﻿@typeparam TValue
+<div class="dropdown w-100">
+    <button 
+            class="btn btn-primary dropdown-toggle w-100" 
+            type="button" 
+            id="dropdownMenuButton" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false">
+        @(SelectedItem == null ? "Please select something" : SelectedItem.DisplayText)
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        @foreach (var item in SelectableItems)
+        {
+            <a class="dropdown-item" @onclick="@(() => OnItemClicked(item))">@item.DisplayText</a>
+        }
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/components/itemCheckBox.css",
+    "inputFile": "wwwroot/css/components/itemCheckBox.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/components/itemElement.css",
+    "inputFile": "wwwroot/css/components/itemElement.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/components/itemsList.css",
+    "inputFile": "wwwroot/css/components/itemsList.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/components/sign.css",
+    "inputFile": "wwwroot/css/components/sign.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/app.css",
+    "inputFile": "wwwroot/css/app.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/components/itemsOverview.css",
+    "inputFile": "wwwroot/css/components/itemsOverview.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/components/itemEdit.css",
+    "inputFile": "wwwroot/css/components/itemEdit.scss"
+  },
+  {
+    "outputFile": "Components/ItemEdit.razor.css",
+    "inputFile": "Components/ItemEdit.razor.scss"
+  },
+  {
+    "outputFile": "Components/ItemsList.razor.css",
+    "inputFile": "Components/ItemsList.razor.scss"
+  }
+]

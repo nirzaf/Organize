@@ -1,0 +1,34 @@
+﻿@page "/signin"
+@page "/"
+@inherits SignInBase
+@layout UnAuthLayout
+
+<div class="sign-form">
+    <p class="welcome-text">Hello @(string.IsNullOrEmpty(User.UserName) ? "User" : User.UserName) - Today is @Day!</p>
+
+    <EditForm EditContext="@EditContext" OnSubmit="OnSubmit">
+        <DataAnnotationsValidator />
+        @*<InputText type="text" class="sign-input form-control" placeholder="Username" @bind-Value="User.UserName" />
+            <ValidationMessage For="@(()=> User.UserName)"></ValidationMessage>*@
+        <div class="sign-validation">
+            <ValidationInput placeholder="Username"
+                             @bind-Value="@User.UserName"
+                             Error="@GetError(() => User.UserName)"></ValidationInput>
+        </div>
+        @*<InputText type="password" class="sign-input form-control" placeholder="Password" @bind-Value="User.Password" />
+            <ValidationMessage For="@(()=> User.Password)"></ValidationMessage>*@
+        <div class="sign-validation">
+            <ValidationInput type="@(ShowPassword  ? "text" : "password")"
+                             placeholder="Password"
+                             @bind-Value="@User.Password"
+                             Error="@GetError(() => User.Password)"></ValidationInput>
+            <input type="checkbox" @bind="ShowPassword" />Show password
+        </div>
+        <button class="sign-button btn btn-primary" type="submit">Sign in</button>
+    </EditForm>
+    <div class="signup">
+        @*<a href="@(User.UserName != null ? "/signup?username="+User.UserName : "/signup")">Sign up</a>*@
+        <a href="@(User.UserName != null ? "/signup?username="+User.UserName : "/signup")">Sign up</a>
+    </div>
+
+</div>

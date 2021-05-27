@@ -1,0 +1,38 @@
+﻿@inherits LayoutComponentBase
+
+@if (IsAuthenticated)
+{
+    <nav class="navbar navbar-light justify-content-between fixed-top">
+        <a class="navbar-brand" href="/items">
+            <img src="/images/blazor.png" width="30" height="30" class="d-inline-block align-top">
+            @if (UseShortNavText)
+            {
+                @:Hello
+            }
+            else
+            {
+                @:Hello @CurrentUserService.CurrentUser! Organize your life right
+            }
+        </a>
+        <form class="form-inline">
+            @* Add the buttons here *@
+            <NavLink href="settings" ActiveClass="active-nav">
+                <button class="btn btn-outline-success my-2 my-sm-0">Settings</button>
+            </NavLink>
+            <NavLink href="about" ActiveClass="active-nav">
+                <button class="btn btn-outline-success my-2 my-sm-0">About</button>
+            </NavLink>
+            <div class="btn btn-outline-success my-2 my-sm-0" @onclick="SignOut">Sign out</div>
+        </form>
+    </nav>
+
+    <div class="main">
+            @Body
+    </div>
+}
+else
+{
+    <div class="main">
+        <a href="/signin">Please go to the sign in page</a>
+    </div>
+}

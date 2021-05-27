@@ -1,0 +1,51 @@
+﻿@import '../_variables.scss';
+
+.items-container {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 58px;
+    height: 100%;
+    width: 100%;
+}
+
+.items-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 50%;
+    overflow-y: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    height: 100%;
+}
+
+.item-edit-container {
+    flex: 1 1 50%;
+    height: 100%;
+    width: 100%;
+    background: white;
+    overflow-y: auto;
+    padding: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border: #1c7430
+}
+
+.item-add-box {
+    border: 1px solid $primary-color;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    padding-right: 24px;
+    padding-left: 24px;
+}
+
+.item-add-input {
+    width: 100%;
+    flex: 1 1 auto;
+    margin-right: 40px;
+}

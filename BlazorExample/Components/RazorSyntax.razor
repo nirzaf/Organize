@@ -1,0 +1,60 @@
+﻿@*@page "/razorSyntax"*@
+@*@implements IDisposable*@
+
+<h3>RazorSyntax</h3>
+
+@*-------------Call a method (implicit expression)-------------*@
+<p>@GetTestString()</p>
+
+@*-------------Call a generic method (explicit expression)-------------*@
+<p>@(WriteObject<string>("use explicit expression for generics"))</p>
+
+@*-------------FOR-------------*@
+<div>
+    All even number up to 20:
+    @for (int i = 0; i <= 10; i++)
+    {
+        @*<p>@(i * 2)</p>*@
+
+        //No HTML tag is rendered
+        @*<text>@(i * 2),</text>*@
+        @:Result @(i * 2)
+    }
+</div>
+
+<div>
+    All even number up to 20:
+    @for (int i = 0; i <= 10; i++)
+    {
+        <p>@i * 2 = @(i*2)</p>
+    }
+</div>
+
+@*-------------Escaped-------------*@
+<p>rrr@test</p>
+<p>@@test</p>
+<p>@test</p>
+
+@*-------------IF/Else-------------*@
+
+
+
+ 
+
+
+@code{
+
+    private string test = "X";
+
+    private string GetTestString()
+    {
+        return "This is a test";
+    }
+
+    private string WriteObject<T>(T obj)
+    {
+        return obj.ToString();
+    }
+
+}
+

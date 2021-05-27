@@ -1,0 +1,12 @@
+﻿@page "/settings"
+
+<AuthorizeView Roles="admin">
+    <Authorized>
+        <div class="p-3">
+            <button class="orga-button" @onclick="DeleteAllDone">Delete All Done</button>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <div>You're not authorized to see this page.</div>
+    </NotAuthorized>
+</AuthorizeView>

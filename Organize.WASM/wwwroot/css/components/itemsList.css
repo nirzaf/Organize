@@ -1,0 +1,42 @@
+﻿.item-main-container {
+  display: flex;
+  flex-flow: column;
+  height: 100%; }
+
+.content-text-top {
+  flex: 1 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.content-text-bottom {
+  flex: 0 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: white; }
+
+a.content-text-bottom {
+  font-weight: bold;
+  text-overflow: unset; }
+
+/*Detail area styling*/
+.detail-text {
+  margin-left: 80px; }
+
+.detail-image {
+  margin-left: 80px;
+  width: 100px;
+  height: 100px; }
+
+.extended-child {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4px;
+  margin-bottom: 4px; }
+
+.child-title {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center; }

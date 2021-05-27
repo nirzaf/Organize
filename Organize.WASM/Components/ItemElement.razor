@@ -1,0 +1,32 @@
+﻿ @typeparam TItem 
+
+<div class="item-element">
+    <div class="item-element-main @(Item.IsDone ? ColorPrefix+"-background-disabled" : ColorPrefix+"-background")">
+        <div class="check-container">
+            <div class="checkbox">
+                <ItemCheckBox Item="Item"></ItemCheckBox>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="main-fragment @(Item.IsDone ? "crossed-out" : "")" @onclick="OpenItemInEditMode" @onclick:stopPropagation>
+                @MainFragment
+            </div>
+            <div class="position">@Item.Position/@TotalNumber</div>
+        </div>
+        <div class="arrow-container" 
+             data-toggle="collapse" 
+             href="#@DetailAreaId" 
+             role="button" 
+             aria-expanded="false" 
+             aria-controls="@DetailAreaId">
+            <svg class="bi bi-chevron-down" width="2em" height="2em" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" />
+            </svg>
+        </div>
+    </div>
+    <div class="collapse w-100" id="@DetailAreaId">
+        <div class="detail-fragment @(Item.IsDone ? ColorPrefix+"-border-color-disabled" :  ColorPrefix+"-border-color")">
+            @DetailFragment
+        </div>
+    </div>
+</div>

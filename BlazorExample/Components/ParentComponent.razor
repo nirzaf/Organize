@@ -1,0 +1,18 @@
+﻿<h3>ParentComponent</h3>
+<p>Current count parent: @_childCounterValue</p>
+
+@*<ChildComponent OnCounterIncreasedCallback="OnCounterIncreased"></ChildComponent>*@
+@*<ChildComponent @bind-CounterValue="_childCounterValue" @bind-CounterValue:event="OnCounterIncreasedCallback"></ChildComponent>*@
+<ChildComponent @bind-CounterValue="_childCounterValue"></ChildComponent>
+
+
+
+@code {
+
+    private int _childCounterValue = 0;
+
+    public void OnCounterIncreased(int counterValue)
+    {
+        _childCounterValue = counterValue;
+    }
+}

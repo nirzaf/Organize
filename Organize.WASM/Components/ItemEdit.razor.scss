@@ -1,0 +1,31 @@
+﻿@import '../wwwroot/css/_bootstrap-global.scss';
+@import '../wwwroot/bootstrap/scss/_forms.scss';
+
+@import 'BaseStyles/_ItemElementBase.scss';
+
+::deep .title {
+    @extend .title-base;
+    text-decoration: underline;
+}
+
+
+.item-edit-info {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 24px;
+}
+
+.item-edit-info-text {
+    flex: 1 1 auto
+}
+
+.item-edit-info-count {
+    flex: 1 1 auto;
+    text-align: right
+}
+
+.item-edit-input {
+    @extend .form-control;
+    width: 100%;
+    margin-bottom: 12px;
+}

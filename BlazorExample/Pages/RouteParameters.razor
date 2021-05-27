@@ -1,0 +1,10 @@
+﻿@page "/params"
+@page "/params/{id:int}"
+
+<h3>RouteParameters</h3>
+<div>Id: @Id</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+}

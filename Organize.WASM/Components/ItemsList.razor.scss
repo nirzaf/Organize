@@ -1,0 +1,7 @@
+﻿@import 'BaseStyles/_ItemElementBase.scss';
+
+.title {
+    @extend .title-base;
+    font-size: 1.5rem;
+    font-family: monospace;
+}

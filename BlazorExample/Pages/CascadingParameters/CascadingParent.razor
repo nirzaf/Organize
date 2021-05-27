@@ -1,0 +1,11 @@
+﻿@page "/cascading"
+
+<h3>Parent</h3>
+
+<CascadingValue Value="4">
+    <CascadingValue Value="@("Hello")" Name="H1">
+        <CascadingValue Value="@("Second string")" Name="H2">
+            <Child></Child>
+        </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>

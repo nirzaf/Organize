@@ -1,0 +1,33 @@
+﻿<h3>ChildComponent</h3>
+
+
+<p>Current count child: @CounterValue</p>
+
+<button class="btn btn-primary"
+        @onclick="IncrementCounterValue">
+    Click me
+</button>
+
+@code {
+
+    //private int _counterValue = 0;
+    [Parameter]
+    public int CounterValue { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnCounterIncreasedCallback { get; set; }
+
+    [Parameter]
+    public EventCallback<int> CounterValueChanged { get; set; }
+
+    //Warum async und warum invoke async
+    private async Task IncrementCounterValue()
+    {
+        //_counterValue++;
+        CounterValue++;
+        //await OnCounterIncreasedCallback.InvokeAsync(_counterValue);
+        await OnCounterIncreasedCallback.InvokeAsync(CounterValue);
+        await CounterValueChanged.InvokeAsync(CounterValue);
+    }
+
+}

@@ -1,0 +1,10 @@
+﻿@inherits DependencyInjectionParentComponentBase
+
+<h3>DependencyInjectionParentComponent</h3>
+
+<input type="checkbox" @bind-value="IsComponentVisible"/> Show Component
+@if (IsComponentVisible)
+{
+    <DependencyInjectionComponent></DependencyInjectionComponent>
+}
+
