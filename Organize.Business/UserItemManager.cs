@@ -12,7 +12,7 @@ namespace Organize.Business
 {
     public class UserItemManager : IUserItemManager
     {
-        private IItemDataAccess _itemDataAccess;
+        private readonly IItemDataAccess _itemDataAccess;
 
         public UserItemManager(IItemDataAccess itemDataAccess)
         {
@@ -43,12 +43,8 @@ namespace Organize.Business
 
         public async Task<ChildItem> CreateNewChildItemAndAddItToParentItemAsync(ParentItem parent)
         {
-            var childItem = new ChildItem();
-            childItem.ParentId = parent.Id;
-            childItem.ItemTypeEnum = ItemTypeEnum.Child;
-
+            var childItem = new ChildItem {ParentId = parent.Id, ItemTypeEnum = ItemTypeEnum.Child};
             await _itemDataAccess.InsertItemAsync(childItem);
-
             parent.ChildItems.Add(childItem);
             return childItem;
         }
@@ -65,10 +61,12 @@ namespace Organize.Business
                     item = await CreateAndInsertItemAsync<UrlItem>(user, typeEnum);
                     break;
                 case ItemTypeEnum.Parent:
+                {
                     var parent = await CreateAndInsertItemAsync<ParentItem>(user, typeEnum);
                     parent.ChildItems = new ObservableCollection<ChildItem>();
                     item = parent;
                     break;
+                }
             }
 
             user.UserItems.Add(item);
@@ -79,10 +77,12 @@ namespace Organize.Business
             User user,
             ItemTypeEnum typeEnum) where T : BaseItem, new()
         {
-            var item = new T();
-            item.ItemTypeEnum = typeEnum;
-            item.Position = user.UserItems.Count + 1;
-            item.ParentId = user.Id;
+            var item = new T
+            {
+                ItemTypeEnum = typeEnum,
+                Position = user.UserItems.Count + 1,
+                ParentId = user.Id
+            };
 
             await _itemDataAccess.InsertItemAsync(item);
 
@@ -113,10 +113,8 @@ namespace Organize.Business
         {
             var doneItems = user.UserItems.Where(i => i.IsDone).ToList();
             Console.WriteLine(doneItems.Count);
-
             var doneParentItem = doneItems.OfType<ParentItem>().ToList();
             var allChildItems = doneParentItem.SelectMany(i => i.ChildItems).ToList();
-
             await _itemDataAccess.DeleteItemsAsync(allChildItems);
             await _itemDataAccess.DeleteItemsAsync(doneParentItem);
             await _itemDataAccess.DeleteItemsAsync(doneItems.OfType<TextItem>());

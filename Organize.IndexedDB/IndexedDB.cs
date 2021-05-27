@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace Organize.IndexedDB
 {
-    public class IndexedDB : IPersistenceService
+    public class IndexedDb : IPersistenceService
     {
         private IJSRuntime _jsRuntime;
         private JsonSerializerSettings _settings;
 
-        public IndexedDB(IJSRuntime jSRuntime)
+        public IndexedDb(IJSRuntime jSRuntime)
         {
             _jsRuntime = jSRuntime;
             _settings = new JsonSerializerSettings();
