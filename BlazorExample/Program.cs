@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
-using System.Text;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using BlazorExample.Components.DependencyInjection.Contracts;
 using BlazorExample.Components.DependencyInjection.Implementations;
-using System.Net.Http;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorExample
 {
@@ -33,7 +31,8 @@ namespace BlazorExample
 
             //****
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped(
+                sp => new HttpClient {BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)});
 
             await builder.Build().RunAsync();
         }

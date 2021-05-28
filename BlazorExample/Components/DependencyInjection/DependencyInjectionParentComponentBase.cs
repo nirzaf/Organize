@@ -3,10 +3,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace BlazorExample.Components.DependencyInjection
 {
-    public class DependencyInjectionParentComponentBase: ComponentBase
+    public class DependencyInjectionParentComponentBase : ComponentBase
     {
-        [Inject]
-        private IConstructorInjectionOne ConstructorInjectionOne { get; set; }
+        [Inject] private IConstructorInjectionOne ConstructorInjectionOne { get; set; }
 
         protected bool IsComponentVisible { get; set; } = false;
 

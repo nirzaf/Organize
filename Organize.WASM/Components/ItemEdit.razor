@@ -7,13 +7,13 @@
     </div>
 
     <label for="title" class="title">Title</label>
-    <input id="title" type="text" class="item-edit-input" @bind-value="@Item.Title" @bind-value:event="oninput" />
+    <input id="title" type="text" class="item-edit-input" @bind-value="@Item.Title" @bind-value:event="oninput"/>
 
     @switch (Item)
     {
         case TextItem textItem:
             <label for="subtitle">Subtitle</label>
-            <input id="subtitle" class="item-edit-input" @bind-value="@textItem.SubTitle" @bind-value:event="oninput" />
+            <input id="subtitle" class="item-edit-input" @bind-value="@textItem.SubTitle" @bind-value:event="oninput"/>
 
             <label for="details">Details</label>
             <textarea id="details"

@@ -7,7 +7,7 @@
     {
         <li class="list-group-item">
             <input class="form-control" type="text" value="@childItem.Title"
-                   @onchange="@((eventArgs) => OnChildItemTitleChanged(childItem,eventArgs))" />
+                   @onchange="@(eventArgs => OnChildItemTitleChanged(childItem, eventArgs))"/>
         </li>
     }
 </ul>

@@ -6,13 +6,13 @@
 <ChildComponent @bind-CounterValue="_childCounterValue"></ChildComponent>
 
 
-
 @code {
 
-    private int _childCounterValue = 0;
+    private int _childCounterValue;
 
     public void OnCounterIncreased(int counterValue)
     {
         _childCounterValue = counterValue;
     }
+
 }

@@ -23,9 +23,9 @@
     //Warum async und warum invoke async
     private async Task IncrementCounterValue()
     {
-        //_counterValue++;
+    //_counterValue++;
         CounterValue++;
-        //await OnCounterIncreasedCallback.InvokeAsync(_counterValue);
+    //await OnCounterIncreasedCallback.InvokeAsync(_counterValue);
         await OnCounterIncreasedCallback.InvokeAsync(CounterValue);
         await CounterValueChanged.InvokeAsync(CounterValue);
     }

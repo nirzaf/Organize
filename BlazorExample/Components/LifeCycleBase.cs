@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BlazorExample.Entities;
@@ -13,6 +11,11 @@ namespace BlazorExample.Components
         [Parameter] public int SomeIntValue { get; set; }
 
         public User User { get; set; }
+
+        public void Dispose()
+        {
+            Console.WriteLine("Dispose");
+        }
 
         public override Task SetParametersAsync(ParameterView parameters)
         {
@@ -53,7 +56,6 @@ namespace BlazorExample.Components
 
         protected override async Task OnParametersSetAsync()
         {
-
             Console.WriteLine("OnParametersSetAsync");
             await base.OnParametersSetAsync();
         }
@@ -63,11 +65,6 @@ namespace BlazorExample.Components
             Console.WriteLine("OnAfterRenderAsync");
             Console.WriteLine("-------------");
             await base.OnAfterRenderAsync(firstRender);
-        }
-
-        public void Dispose()
-        {
-            Console.WriteLine("Dispose");
         }
     }
 }

@@ -2,13 +2,14 @@
 @page "/lifecycle/{SomeIntValue:int}"
 @inherits LifeCycleBase
 
-@if(User != null) {
-            <div>Firstname: @User.FirstName</div>
-        }
-    else
-    {
+@if (User != null)
+{
+    <div>Firstname: @User.FirstName</div>
+}
+else
+{
     <div>Loading...</div>
-    }
+}
 
 <div>
     @SomeIntValue

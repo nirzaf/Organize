@@ -7,12 +7,12 @@
 <p>@GetTestString()</p>
 
 @*-------------Call a generic method (explicit expression)-------------*@
-<p>@(WriteObject<string>("use explicit expression for generics"))</p>
+<p>@(WriteObject("use explicit expression for generics"))</p>
 
 @*-------------FOR-------------*@
 <div>
     All even number up to 20:
-    @for (int i = 0; i <= 10; i++)
+    @for (var i = 0; i <= 10; i++)
     {
         @*<p>@(i * 2)</p>*@
 
@@ -24,9 +24,9 @@
 
 <div>
     All even number up to 20:
-    @for (int i = 0; i <= 10; i++)
+    @for (var i = 0; i <= 10; i++)
     {
-        <p>@i * 2 = @(i*2)</p>
+        <p>@i * 2 = @(i * 2)</p>
     }
 </div>
 
@@ -39,12 +39,12 @@
 
 
 
- 
+
 
 
 @code{
 
-    private string test = "X";
+    private readonly string test = "X";
 
     private string GetTestString()
     {
@@ -57,4 +57,3 @@
     }
 
 }
-
