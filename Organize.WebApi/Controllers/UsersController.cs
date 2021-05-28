@@ -65,8 +65,8 @@ namespace Organize.WebApi.Controllers
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var claims = new Claim[]
             {
-                new Claim("id",foundUser.Id.ToString()), 
-                new Claim(ClaimTypes.Role,"admin")
+                new("id",foundUser.Id.ToString()), 
+                new(ClaimTypes.Role,"admin")
             };
 
             var tokenDescriptor = new SecurityTokenDescriptor

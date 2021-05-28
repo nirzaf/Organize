@@ -11,10 +11,7 @@ namespace Organize.WASM.OrganizeAuthenticationStateProvider
         private readonly ICurrentUserService _currentUserService;
 
         public SimpleAuthenticationStateProvider(
-            ICurrentUserService currentUserService)
-        {
-            _currentUserService = currentUserService;
-        }
+            ICurrentUserService currentUserService) => _currentUserService = currentUserService;
 
         public override Task<AuthenticationState> GetAuthenticationStateAsync()
         {
