@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Organize.WASM.ItemEdit
 {
-    public class ItemEditService
+    public sealed class ItemEditService
     {
         public event EventHandler<ItemEditEventArgs> EditItemChanged;
 
@@ -14,7 +14,7 @@ namespace Organize.WASM.ItemEdit
 
         public BaseItem EditItem
         {
-            get { return _editItem; }
+            get => _editItem;
             set
             {
                 if (_editItem == value)
@@ -23,19 +23,15 @@ namespace Organize.WASM.ItemEdit
                 }
 
                 _editItem = value;
-                var args = new ItemEditEventArgs();
-                args.Item = _editItem;
+                var args = new ItemEditEventArgs {Item = _editItem};
                 OnEditItemChanged(args);
             }
         }
 
-        protected virtual void OnEditItemChanged(ItemEditEventArgs e)
+        private void OnEditItemChanged(ItemEditEventArgs e)
         {
-            EventHandler<ItemEditEventArgs> handler = EditItemChanged;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            var handler = EditItemChanged;
+            handler?.Invoke(this, e);
         }
     }
 }

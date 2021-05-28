@@ -36,9 +36,10 @@ namespace Organize.WebApi.Controllers
         [HttpGet]
         public IActionResult Get([FromQuery]int type)
         {
-            var userId = int.Parse(Request.HttpContext.User.FindFirst("id").Value);
+            var userId = int.Parse(Request.HttpContext.User.FindFirst("id")?.Value);
             var typeEnum = (ItemTypeEnum) type;
-            if(typeEnum == ItemTypeEnum.Child)
+            if (typeEnum != ItemTypeEnum.Child)
+                return Ok(Items.Where(i => i.ParentId == userId && i.ItemTypeEnum == typeEnum));
             {
                 var parentItemsIds = Items
                     .Where(i => i.ParentId == userId && i.ItemTypeEnum == ItemTypeEnum.Parent)
@@ -47,7 +48,6 @@ namespace Organize.WebApi.Controllers
                 return Ok(Items.Where(i => parentItemsIds.Contains(i.ParentId) && i.ItemTypeEnum == typeEnum));
             }
 
-            return Ok(Items.Where(i => i.ParentId == userId && i.ItemTypeEnum == typeEnum));
         }
 
         [HttpPost]
