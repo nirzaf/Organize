@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Organize.Shared.Enitites;
 using Organize.Shared.Enums;
 using Organize.TestFake;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Organize.WebApi.Controllers
 {
@@ -36,18 +29,19 @@ namespace Organize.WebApi.Controllers
         [HttpGet]
         public IActionResult Get([FromQuery]int type)
         {
-            var userId = int.Parse(Request.HttpContext.User.FindFirst("id")?.Value);
-            var typeEnum = (ItemTypeEnum) type;
-            if (typeEnum != ItemTypeEnum.Child)
-                return Ok(Items.Where(i => i.ParentId == userId && i.ItemTypeEnum == typeEnum));
             {
-                var parentItemsIds = Items
-                    .Where(i => i.ParentId == userId && i.ItemTypeEnum == ItemTypeEnum.Parent)
-                    .Select(i => i.Id)
-                    .ToList();
-                return Ok(Items.Where(i => parentItemsIds.Contains(i.ParentId) && i.ItemTypeEnum == typeEnum));
+                var userId = int.Parse(Request.HttpContext.User.FindFirst("id")?.Value);
+                var typeEnum = (ItemTypeEnum) type;
+                if (typeEnum != ItemTypeEnum.Child)
+                    return Ok(Items.Where(i => i.ParentId == userId && i.ItemTypeEnum == typeEnum));
+                {
+                    var parentItemsIds = Items
+                        .Where(i => i.ParentId == userId && i.ItemTypeEnum == ItemTypeEnum.Parent)
+                        .Select(i => i.Id)
+                        .ToList();
+                    return Ok(Items.Where(i => parentItemsIds.Contains(i.ParentId) && i.ItemTypeEnum == typeEnum));
+                }
             }
-
         }
 
         [HttpPost]

@@ -19,10 +19,5 @@ namespace GeneralUi.Validation
 
         [Parameter(CaptureUnmatchedValues = true)]
         public Dictionary<string, object> InputAttributes { get; set; }
-
-        protected async void HandleInputChanged(ChangeEventArgs eventArgs)
-        {
-            await ValueChanged.InvokeAsync(eventArgs.Value.ToString());
-        }
     }
 }
